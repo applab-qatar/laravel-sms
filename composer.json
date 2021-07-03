@@ -1,0 +1,38 @@
+{
+    "name": "applab/laravel-sms",
+    "description": "applab sms via Ooredoo",
+    "keywords": [
+        "laravel",
+        "sms",
+        "applab"
+    ],
+    "require": {
+        "php": ">=5.6",
+        "guzzlehttp/guzzle": "6.x"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Applab\\LaravelSms\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Applab\\LaravelSms\\LaravelSmsServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "manu-applab",
+            "email": "manu@applab.qa"
+        }
+    ],
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "dev"
+}
