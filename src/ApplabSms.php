@@ -9,7 +9,7 @@ class ApplabSms
 {
     public $authClass;
     public static $bearerToken;
-    public static $secretKey;
+    public static $apiKey;
     public static $client;
     public function __construct()
     {
@@ -75,6 +75,23 @@ class ApplabSms
                     'text' => $message,
                 ];
                 $response = $this->messageClass->sendSingle($body);
+                return $response;
+            }else{
+                throw new Exception('Invalid input!, Ensure receiver mobile number and message text is correct');
+            }
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+    public function multipleRecipeints($receivers,$message)
+    {
+        try {
+            if(!empty($receivers) && !empty($message)) {
+                $body = [
+                    'to' => $receivers,
+                    'text' => $message,
+                ];
+                $response = $this->messageClass->sendBulk($body);
                 return $response;
             }else{
                 throw new Exception('Invalid input!, Ensure receiver mobile number and message text is correct');

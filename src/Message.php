@@ -16,7 +16,7 @@ class Message extends GClient
                     'Authorization' => "Bearer " . Cache::get('applab-sms-btoken'),
                     'Accept' => 'application/json',
                     'Accept-Language' => app()->getLocale(),
-                    'secretKey' => config('applab-sms.secret-key'),
+                    'apiKey' => config('applab-sms.api-key'),
                 ], 'json' => $body
             ]);
             if ($response->getBody()->getContents()) {
@@ -36,7 +36,7 @@ class Message extends GClient
                     'Authorization' => "Bearer " . Cache::get('applab-sms-btoken'),
                     'Accept' => 'application/json',
                     'Accept-Language' => app()->getLocale(),
-                    'secretKey' => config('applab-sms.secret-key'),
+                    'apiKey' => config('applab-sms.api-key'),
                 ], 'json' => $body
             ]);
             if ($response->getBody()->getContents()) {
