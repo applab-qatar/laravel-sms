@@ -100,4 +100,20 @@ class ApplabSms
             throw $e;
         }
     }
+    public function checkStatus($transaction_id)
+    {
+        try {
+            if(!empty($transaction_id)) {
+                $body = [
+                    'transactionId' => $transaction_id,
+                ];
+                $response = $this->messageClass->checkStatus($body);
+                return $response;
+            }else{
+                throw new Exception('Invalid input!, Ensure transactionId is correct');
+            }
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
 }

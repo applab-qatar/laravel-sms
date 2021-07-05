@@ -47,4 +47,24 @@ class Message extends GClient
             throw $e;
         }
     }
+
+    public function checkStatus($body)
+    {
+        try {
+            $response = $this->client->request('POST', 'send-sms/status', [
+                'headers' => [
+                    'Authorization' => "Bearer " . Cache::get('applab-sms-btoken'),
+                    'Accept' => 'application/json',
+                    'Accept-Language' => app()->getLocale(),
+                    'apiKey' => config('applab-sms.api-key'),
+                ], 'json' => $body
+            ]);
+            if ($response->getBody()->getContents()) {
+                return $response->getBody();
+            }
+            throw new \Exception("Bulk Sending failed");
+        } catch (GuzzleException $e) {
+            throw $e;
+        }
+    }
 }
