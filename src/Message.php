@@ -62,7 +62,7 @@ class Message extends GClient
             if ($response->getBody()->getContents()) {
                 return $response->getBody();
             }
-            throw new \Exception("Bulk Sending failed");
+            throw new \Exception("Status checking failed");
         } catch (GuzzleException $e) {
             throw $e;
         }
