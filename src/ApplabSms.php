@@ -31,7 +31,7 @@ class ApplabSms
                     'message_id'=>$message_id
                 ];
                 $response=$this->otpClass->sendOtp($body);
-                return $response;
+                return json_encode($response, true);
             }else{
                 throw new Exception('Invalid input!, Ensure receiver mobile number and message id is correct');
             }
@@ -47,7 +47,7 @@ class ApplabSms
                 'pin_id' => $pin_id,
             ];
             $response=$this->otpClass->resend($body);
-            return $response;
+            return json_encode($response, true);
         } catch (Exception $e) {
             throw $e;
         }
