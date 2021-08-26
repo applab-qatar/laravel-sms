@@ -30,7 +30,8 @@ class ApplabSms
                     'language'=>$lang,
                     'message_id'=>$message_id
                 ];
-                return $this->otpClass->sendOtp($body);
+                $response= $this->otpClass->sendOtp($body);
+                return json_decode($response);
             }else{
                 throw new Exception('Invalid input!, Ensure receiver mobile number and message id is correct');
             }
@@ -45,7 +46,8 @@ class ApplabSms
             $body = [
                 'pin_id' => $pin_id,
             ];
-            return $this->otpClass->resend($body);
+            $response= $this->otpClass->resend($body);
+            return json_decode($response);
         } catch (Exception $e) {
             throw $e;
         }
@@ -57,7 +59,8 @@ class ApplabSms
                 'pin_id' => $pin_id,
                 'otp' => $otp,
             ];
-            return $this->otpClass->verify($body);
+            $response= $this->otpClass->verify($body);
+            return json_decode($response);
         } catch (Exception $e) {
             throw $e;
         }
@@ -71,7 +74,8 @@ class ApplabSms
                     'to' => $receiver,
                     'text' => $message,
                 ];
-                return $this->messageClass->sendSingle($body);
+                $response= $this->messageClass->sendSingle($body);
+                return json_decode($response);
             }else{
                 throw new Exception('Invalid input!, Ensure receiver mobile number and message text is correct');
             }
@@ -87,7 +91,8 @@ class ApplabSms
                     'to' => $receivers,
                     'text' => $message,
                 ];
-                return $this->messageClass->sendBulk($body);
+                $response= $this->messageClass->sendBulk($body);
+                return json_decode($response);
             }else{
                 throw new Exception('Invalid input!, Ensure receiver mobile number and message text is correct');
             }
@@ -102,8 +107,8 @@ class ApplabSms
                 $body = [
                     'transactionId' => $transaction_id,
                 ];
-                $response = $this->messageClass->checkStatus($body);
-                return $response;
+                $response= $this->messageClass->checkStatus($body);
+                return json_decode($response);
             }else{
                 throw new Exception('Invalid input!, Ensure transactionId is correct');
             }
