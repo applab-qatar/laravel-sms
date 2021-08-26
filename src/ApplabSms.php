@@ -30,8 +30,7 @@ class ApplabSms
                     'language'=>$lang,
                     'message_id'=>$message_id
                 ];
-                $response=$this->otpClass->sendOtp($body);
-                return json_encode($response, true);
+                return $this->otpClass->sendOtp($body);
             }else{
                 throw new Exception('Invalid input!, Ensure receiver mobile number and message id is correct');
             }
@@ -46,8 +45,7 @@ class ApplabSms
             $body = [
                 'pin_id' => $pin_id,
             ];
-            $response=$this->otpClass->resend($body);
-            return json_encode($response, true);
+            return $this->otpClass->resend($body);
         } catch (Exception $e) {
             throw $e;
         }
@@ -59,8 +57,7 @@ class ApplabSms
                 'pin_id' => $pin_id,
                 'otp' => $otp,
             ];
-            $response=$this->otpClass->verify($body);
-            return $response;
+            return $this->otpClass->verify($body);
         } catch (Exception $e) {
             throw $e;
         }
@@ -74,8 +71,7 @@ class ApplabSms
                     'to' => $receiver,
                     'text' => $message,
                 ];
-                $response = $this->messageClass->sendSingle($body);
-                return $response;
+                return $this->messageClass->sendSingle($body);
             }else{
                 throw new Exception('Invalid input!, Ensure receiver mobile number and message text is correct');
             }
@@ -91,8 +87,7 @@ class ApplabSms
                     'to' => $receivers,
                     'text' => $message,
                 ];
-                $response = $this->messageClass->sendBulk($body);
-                return $response;
+                return $this->messageClass->sendBulk($body);
             }else{
                 throw new Exception('Invalid input!, Ensure receiver mobile number and message text is correct');
             }
