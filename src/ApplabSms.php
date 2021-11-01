@@ -14,7 +14,7 @@ class ApplabSms
     public function __construct()
     {
         $this->authClass=new Authentication();
-        if(!Cache::has('applab-sms-btoken') || !empty(Cache::get('applab-sms-btoken'))){
+        if(!Cache::has('applab-sms-btoken') || empty(Cache::get('applab-sms-btoken'))){
             $this->authClass->login();
         }
         $this->otpClass=new OTPSms();
