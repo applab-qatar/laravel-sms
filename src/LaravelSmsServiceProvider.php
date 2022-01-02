@@ -13,8 +13,8 @@ class LaravelSmsServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->app->singleton(LaravelSms::class,function (){
-            return new LaravelSms();
+        $this->app->bind('applabsms',function ($app){
+            return new ApplabSMS();
         });
     }
 }

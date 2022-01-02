@@ -83,7 +83,7 @@ class ApplabSms
             throw $e;
         }
     }
-    public function multipleRecipeints($receivers,$message)
+    public function multipleRecipients($receivers,$message)
     {
         try {
             if(!empty($receivers) && !empty($message)) {
