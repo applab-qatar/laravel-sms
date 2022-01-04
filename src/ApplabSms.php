@@ -24,7 +24,7 @@ class ApplabSms
     public function otpSend($receiver,$message_id,$lang='en')
     {
         try{
-            if(strlen($receiver)==11 && !empty($message_id)){
+            if(!empty($receiver) && !empty($message_id)){
                 $body=[
                     'to'=>$receiver,
                     'language'=>$lang,
@@ -69,7 +69,7 @@ class ApplabSms
     public function singleMessage($receiver,$message)
     {
         try {
-            if(strlen($receiver)==11 && !empty($message)) {
+            if(!empty($receiver) && !empty($message)) {
                 $body = [
                     'to' => $receiver,
                     'text' => $message,
