@@ -8,7 +8,6 @@ class LaravelSmsServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/applab-config.php'=>config_path('applab-sms.php')
         ]);
-        $this->loadRoutesFrom(__DIR__ . '/routes' . '/web.php');
     }
 
     public function register()
