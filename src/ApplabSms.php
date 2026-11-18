@@ -11,6 +11,8 @@ class ApplabSms
     public static $bearerToken;
     public static $apiKey;
     public static $client;
+    public $otpClass;
+    public $messageClass;
     public function __construct()
     {
         $this->authClass=new Authentication();
