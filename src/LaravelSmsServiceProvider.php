@@ -12,6 +12,7 @@ class LaravelSmsServiceProvider extends ServiceProvider
 
     public function register()
     {
+        $this->mergeConfigFrom(__DIR__.'/../config/applab-config.php', 'applab-sms');
         $this->app->bind('applabsms',function ($app){
             return new ApplabSms();
         });
