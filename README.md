@@ -50,9 +50,20 @@ Message ID optional, This using only for OTP Template
 ```bash
   ApplabSMS::singleMessage($destination,$message);
 ```
-### Single Message
+### Bulk Message
 ```bash
   ApplabSMS::multipleRecipients($destinations,$message);
+```
+### Testing
+Check your credentials and each call from `php artisan tinker` in your app:
+```php
+$sms = new Applab\LaravelSms\ApplabSms();
+$otp = $sms->otpSend('97450000000', config('applab-sms.message-id'), 'en');
+$sms->otpReSend($otp->pin_id);          // use the pin_id field from your API response
+$sms->otpVerify($otp->pin_id, '1234');
+$sms->singleMessage('97450000000', 'Test message');
+$sms->multipleRecipients(['97450000000', '97450000001'], 'Test message');
+$sms->checkStatus('transaction-id');
 ```
 ## Security Vulnerabilities
 
