@@ -27,7 +27,7 @@ class Authentication extends GClient
                 if($response->getBody()){
                     $response=json_decode($response->getBody());
                     if($response->token){
-                        Cache::put('applab-sms-btoken', $response->token, (60*24*7));
+                        Cache::put('applab-sms-btoken', $response->token, now()->addWeek());
                         return true;
                     }
                 }

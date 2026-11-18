@@ -8,6 +8,6 @@ class ApplabSMS extends Facade
 
     protected static function getFacadeAccessor()
     {
-        return 'ApplabSMS';
+        return 'applabsms';
     }
 }
